@@ -1,0 +1,45 @@
+version: "3.8"
+services:
+  postgres:
+    image: "postgres:latest"
+    container_name: postgres
+    restart: always
+    build:
+      context: "/home/pirate/ifoofood"
+      dockerfile: "Postgres"
+    command: "postgres"
+    volumes:
+      - /home/pirate/postgres:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    networks:
+      rede_postgres_node:
+        ipv4_address: 10.2.0.2
+
+  nodejs:
+    image: "node:latest"
+    container_name: node-postgres
+    restart: always
+    working_dir: "/home/node"
+    build:
+      context: "/home/pirate/ifoofood"
+      dockerfile: "Node"
+    command: npm start
+    volumes:
+      - /home/pirate/ifoofood:/home/node
+    ports: 
+      - "8081:8081"
+    depends_on: 
+      - postgres
+    networks:
+      rede_postgres_node:
+        ipv4_address: 10.2.0.3
+
+networks:
+  rede_postgres_node:
+    driver: bridge
+    ipam:
+     config:
+        - subnet: 10.2.0.0/16
