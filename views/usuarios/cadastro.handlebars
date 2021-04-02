@@ -1,0 +1,47 @@
+{{#each erros}}
+    <div class="alert alert-danger">
+        {{text}}
+    </div>
+{{else}}
+{{/each}}
+
+<h3>Crie sua conta</h3>
+<form action="" method="POST">
+
+    <div class="card fundo">
+        <div class="card-body">
+            <label>Dados pessoais:</label>
+            <hr>
+            <label for="nome">Nome Completo:</label>
+            <input type="text" name="nome" class="form-control fundo-input" required="true">
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" class="form-control fundo-input">
+            <label for="celular">Celular:</label>
+            <input type="tel" name="celular" class="form-control fundo-input">
+
+            <label class="mt-4">Endereço:</label>
+            <hr>
+            <label for="rua">Rua:</label>
+            <input type="rua" name="rua" class="form-control fundo-input">
+            <label for="numero">Numero:</label>
+            <input type="numero" name="numero" class="form-control fundo-input">
+            <label for="bairro">Bairro:</label>
+            <input type="bairro" name="bairro" class="form-control fundo-input">
+            <label for="cidade">Cidade:</label>
+            <input type="cidade" name="cidade" class="form-control fundo-input">
+            <label for="estado">Estado:</label>
+            <input type="estado" name="estado" class="form-control fundo-input">
+            <label for="cep">CEP:</label>
+            <input type="cep" name="cep" class="form-control fundo-input">
+
+            <label class="mt-4">Dados de acesso:</label>
+            <hr>
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" class="form-control fundo-input">
+            <label for="senha2">Senha:</label>
+            <input type="password" name="senha2" class="form-control fundo-input">
+        </div>
+    </div>
+
+        <button type="submit" class="btn btn-success mt-4">Criar conta</button>
+</form>
